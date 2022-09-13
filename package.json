@@ -1,0 +1,15 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "算法api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dora",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "url": "^0.11.0"
+  }
+}
