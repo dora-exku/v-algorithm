@@ -1,6 +1,8 @@
 const express = require('express')
 const url = require('url')
 const getCkey = require('./lib/tencent_ckey81')
+const iqiyiAuthKey = require('./lib/iqiyi_auth_key')
+const iqiyiCmd5x = require('./lib/iqiyi_cmd5x')
 const app = express()
 const port = 5050
 app.get('/tencent/ckey81', (req, res) => {
@@ -9,6 +11,23 @@ app.get('/tencent/ckey81', (req, res) => {
   var ckey = getCkey(params?.vid, params?.tm, params?.version, params?.guid, params?.platform, params?.url, params?.referer)
   res.json({
     ckey: ckey
+  })
+})
+
+app.get('/iqiyi/authkey', (req, res) => {
+  const params = url.parse(req.url, true).query
+  var authkey = iqiyiAuthKey(params?.tm, params?.vid)
+  res.json({
+    authkey,
+  })
+});
+
+app.get('/iqiyi/cmd5x', (req, res) => {
+  const params = url.parse(req.url, true).query
+
+  var vf = iqiyiCmd5x(params?.url)
+  res.json({
+    vf
   })
 })
 
